@@ -5,157 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Portafolio Profesional</title>
     <style>
-        /* Estilos Generales - Tonos profesionales (Azul tecnológico y gris claro) */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f4f6f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        section {
-            background: white;
-            padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        h2 {
-            color: #1e3c72;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #eef2f3;
-            padding-bottom: 5px;
-            font-size: 1.6rem;
-        }
-
-        p {
-            margin-bottom: 15px;
-            color: #555;
-        }
-
-        /* Estilos para los Proyectos */
-        .project-card {
-            background: #f8fafc;
-            border-left: 4px solid #2a5298;
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 0 6px 6px 0;
-        }
-
-        .project-card h3 {
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        /* Estilos para las Habilidades (Badges) */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .skill-badge {
-            background-color: #eef2f3;
-            color: #1e3c72;
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border: 1px solid #d1d5db;
-        }
-
-        .skill-badge.lab {
-            background-color: #e0f2fe;
-            color: #0369a1;
-            border-color: #bae6fd;
-        }
-
-        /* Footer y Contacto */
-        footer {
-            text-align: center;
-            padding: 30px;
-            margin-top: 40px;
-            color: #777;
-            font-size: 0.9rem;
-        }
-
-        .btn-linkedin {
-            display: inline-block;
-            background-color: #0077b5;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-
-        .btn-linkedin:hover {
-            background-color: #005582;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f4f6f9; color: #333; line-height: 1.6; overflow-x: hidden; }
+        header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 60px 20px; text-align: center; position: relative; }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        header p { font-size: 1.2rem; opacity: 0.9; }
+        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; position: relative; z-index: 2; }
+        section { background: white; padding: 30px; margin-bottom: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        h2 { color: #1e3c72; margin-bottom: 15px; border-bottom: 2px solid #eef2f3; padding-bottom: 5px; }
+        p { margin-bottom: 15px; color: #555; }
+        .project-card { background: #f8fafc; border-left: 4px solid #2a5298; padding: 15px; margin-top: 15px; border-radius: 0 6px 6px 0; }
+        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .skill-badge { background-color: #eef2f3; color: #1e3c72; padding: 8px 14px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; border: 1px solid #d1d5db; }
+        .skill-badge.lab { background-color: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
+        footer { text-align: center; padding: 30px; margin-top: 40px; color: #777; font-size: 0.9rem; }
+        .btn-linkedin { display: inline-block; background-color: #0077b5; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; margin-top: 10px; }
+        
+        /* Contenedor invisible para que los fuegos no tapen los botones */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Permite hacer clic a través de los efectos */
+            z-index: 9999;
         }
     </style>
 </head>
 <body>
 
+    <div id="canvas-container"></div>
+
     <header>
         <h1>Mi Portafolio</h1>
         <p>Innovación en Electrónica, Sistemas Embebidos y Ciencias Químicas</p>
     </header>
-
+    
     <div class="container">
-
         <section id="sobre-mi">
             <h2>Sobre Mí</h2>
-            <p>
-                Soy un apasionado del desarrollo tecnológico enfocado en la convergencia entre la ingeniería electrónica y las ciencias biológicas. Me destaco por mi capacidad para analizar problemas complejos de lógica de hardware y software, buscando siempre soluciones creativas y funcionales basadas en la perseverancia y la experimentación analítica.
-            </p>
+            <p>Desarrollador técnico orientado a la electrónica y el análisis científico. Especializado en programar microcontroladores (Arduino, ESP32) y resolver fallas de hardware. Combino la precisión en C++ con el rigor y la bioseguridad de laboratorio, creando prototipos funcionales de alta utilidad.</p>
         </section>
-
+        
         <section id="proyectos">
             <h2>Proyectos Destacados</h2>
-            
             <div class="project-card">
                 <h3>Pluma Cuentacolonias Electrónica (Hardware & Firmware)</h3>
-                <p>
-                    Diseño, desarrollo y optimización de un prototipo funcional para el conteo microbiológico automático de Unidades Formadoras de Colonias (UFC). 
-                </p>
-                <p><strong>Tecnologías utilizadas:</strong> C++, Microcontroladores (Arduino / ATtiny85 / ESP32), sensores capacitivos de toque y multiplexación de displays para optimización de pines de hardware.</p>
+                <p>Diseño, desarrollo y optimización de un prototipo funcional para el conteo microbiológico automático de Unidades Formadoras de Colonias (UFC).</p>
+                <p><strong>Tecnologías:</strong> C++, Microcontroladores (Arduino / ATtiny85 / ESP32), sensores capacitivos y multiplexación de displays.</p>
             </div>
         </section>
-
+        
         <section id="habilidades">
             <h2>Habilidades Técnicas y de Laboratorio</h2>
             <p><strong>Electrónica y Programación:</strong></p>
@@ -165,27 +66,56 @@
                 <span class="skill-badge">Diseño de Circuitos</span>
                 <span class="skill-badge">Resolución de Problemas (Troubleshooting)</span>
             </div>
-
             <p style="margin-top: 20px;"><strong>Técnicas de Laboratorio Analítico:</strong></p>
             <div class="skills-container">
-                <span class="skill-badge lab">Preparación de Soluciones y Reactivos</span>
+                <span class="skill-badge lab">Preparación de Soluciones</span>
                 <span class="skill-badge lab">Operación de Centrífugas y Autoclaves</span>
                 <span class="skill-badge lab">Principios de Espectrofotometría</span>
                 <span class="skill-badge lab">Bioseguridad y Buenas Prácticas (BPL)</span>
             </div>
         </section>
-
+        
         <section id="contacto" style="text-align: center;">
             <h2>¿Quieres conectar conmigo?</h2>
             <p>Estoy abierto a colaborar en proyectos tecnológicos, desarrollo de hardware o investigación científica.</p>
             <a href="https://www.linkedin.com" target="_blank" class="btn-linkedin">Mi perfil de LinkedIn</a>
         </section>
-
     </div>
-
+    
     <footer>
         <p>&copy; 2026 | Diseñado con enfoque profesional</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <script>
+        // 1. Explosión automática al entrar a la página
+        window.addEventListener('DOMContentLoaded', () => {
+            // Explosión izquierda
+            confetti({
+                particleCount: 150,
+                spread: 80,
+                origin: { x: 0.2, y: 0.6 }
+            });
+            // Explosión derecha
+            confetti({
+                particleCount: 150,
+                spread: 80,
+                origin: { x: 0.8, y: 0.6 }
+            });
+        });
+
+        // 2. Truco extra: Cada vez que hagan clic en el fondo de la pantalla, ¡explota otro!
+        document.body.addEventListener('click', (e) => {
+            // Solo explota si no le están dando clic a un botón o tarjeta
+            if(e.target.tagName !== 'A' && e.target.tagName !== 'SPAN') {
+                confetti({
+                    particleCount: 50,
+                    spread: 60,
+                    origin: { x: e.clientX / window.innerWidth, y: e.clientY / window.innerHeight }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
